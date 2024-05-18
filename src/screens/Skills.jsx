@@ -49,7 +49,7 @@ const Skills = () => {
                         </div>
                         <span>{skill.name}</span>
                         {skillHovered === skill.name && (
-                            <section className="absolute bg-colorLetter p-4 rounded-md shadow-lg">
+                            <section className="absolute bg-colorText p-4 rounded-md shadow-lg">
                                 <p className="text-colorLetter ">{t('descSkill')}</p>
                             </section>
                         )}
