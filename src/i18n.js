@@ -11,7 +11,7 @@ resources: {
     en: {
     translation: {
         aboutMeTitle: 'About me',
-        ExperienciesTitle:'Achievements and expetience',
+        ExperienciesTitle:'Achievements and experience',
         skillsTitle:'Skills',
         projectTitle:'Projects',
         contactTitle:'Contact',
@@ -47,7 +47,7 @@ resources: {
         secondDescProj:'Keysafe Security App. Stores confidential information creating passwords of the highest security. Access and organize your information within the websites of the app, you can save your bank cards, IDs, secrets, generate and store your passwords. ',
 
         // contacTitle:'Contact me',
-        contacText:'Do you have any questions or suggestions, or just want to say hello? Go ahead and contact me or by sending the following form',
+        contacText:'Do you have any questions or suggestions, or just want to say hello? Go ahead and contact me by sending the following form',
         contacMessageForm:'Send Message',
         contacFormName:'Name',
         contacFormEmail:'Email',
