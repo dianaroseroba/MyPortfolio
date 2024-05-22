@@ -102,7 +102,7 @@ resources: {
         secondDescProj:'Keysafe App de seguridad. Almacena informacion confidencial creando contraseñas de la màs alta seguridad. Accede y organiza tu informaciòn dentro de los sitios web od esde la app, podrás guardar tus tarjetas bancarias, identificaciones, secretos, generar y almacenar tus contraseñas.',
 
         // contacTitle:'Contactame',
-        contacText:'¿Tienes alguna pregunta o propuesta, o simplemente quieres saludar? Adelante contactame o enviando el siguiente formulario',
+        contacText:'¿Tienes alguna pregunta o propuesta, o simplemente quieres saludar? Adelante contactame o enviame el siguiente formulario',
         contacMessageForm:'Escríbeme',
         contacFormName:'Nombre',
         contacFormEmail:'Email',
