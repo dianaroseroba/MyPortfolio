@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import keysafe from "./../assets/Images/keysafe.png";
 import portfolio from "./../assets/Images/portafolio.png";
 import { FaChevronLeft, FaChevronRight, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Projects = () => {
     const [currentProject, setCurrentProject] = useState(0);
@@ -15,14 +14,14 @@ const Projects = () => {
             description: t('firstDescProj'),
             githubLink: 'https://github.com/dianaroseroba/PortfolioDianaRosero',
             demoLink: 'https://tu-demo.com',
-            imageSrc: portfolio // Aquí se utiliza la imagen correspondiente al primer proyecto
+            imageSrc: portfolio
         },
         {
             title: t('secondTitleProj'),
             description: t('secondDescProj'),
             githubLink: 'https://github.com/dianaroseroba/CajaSeguridad',
             demoLink: 'https://tu-demo.com',
-            imageSrc: keysafe // Aquí se utiliza la imagen correspondiente al segundo proyecto
+            imageSrc: keysafe
         },
     ];
 
@@ -51,12 +50,12 @@ const Projects = () => {
                         </section>
 
                         <section className="flex flex-col gap-3 mx-auto py-8">
-                            <Link to={projectData[currentProject].githubLink}>
+                            <a href={projectData[currentProject].githubLink} target="_blank" rel="noopener noreferrer">
                                 <button className="items-center gap-2 justify-center flex flex-row bg-colorText hover:text-personalBlue-100 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                     <FaGithub className="w-6 h-6" />
                                     {t('Respository')}
                                 </button>
-                            </Link>
+                            </a>
                         </section>
                     </section>
                 </section>
