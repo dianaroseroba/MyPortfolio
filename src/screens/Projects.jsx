@@ -12,7 +12,7 @@ const Projects = () => {
         {
             title: t('firstTitleProj'),
             description: t('firstDescProj'),
-            githubLink: 'https://github.com/dianaroseroba/PortfolioDianaRosero',
+            githubLink: 'https://github.com/dianaroseroba/MyPortfolio.git',
             demoLink: 'https://tu-demo.com',
             imageSrc: portfolio
         },
