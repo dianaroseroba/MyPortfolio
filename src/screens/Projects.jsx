@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import keysafe from "./../assets/Images/keysafe.png";
 import portfolio from "./../assets/Images/portafolio.png";
+import mercedario from "./../assets/Images/mercedario.png";
+import database from "./../assets/Images/database.png";
+import appmobile from "./../assets/Images/image.png";
+
 import { FaChevronLeft, FaChevronRight, FaGithub } from "react-icons/fa";
 
 const Projects = () => {
@@ -12,16 +16,38 @@ const Projects = () => {
         {
             title: t('firstTitleProj'),
             description: t('firstDescProj'),
+            githubLink: 'https://github.com/dianaroseroba/CajaSeguridad',
+            demoLink: 'https://tu-demo.com',
+            imageSrc: keysafe
+            
+        },
+        {
+            title: t('secondTitleProj'),
+            description: t('secondDescProj'),
             githubLink: 'https://github.com/dianaroseroba/MyPortfolio',
             demoLink: 'https://tu-demo.com',
             imageSrc: portfolio
         },
         {
-            title: t('secondTitleProj'),
-            description: t('secondDescProj'),
+            title: t('thirdTitleProj'),
+            description: t('thirdDescProj'),
+            githubLink: 'https://github.com/dianaroseroba/MercedarioApp.git',
+            demoLink: 'https://tu-demo.com',
+            imageSrc: mercedario
+        },
+        {
+            title: t('quarterTitleProj'),
+            description: t('quarterDescProj'),
             githubLink: 'https://github.com/dianaroseroba/CajaSeguridad',
             demoLink: 'https://tu-demo.com',
-            imageSrc: keysafe
+            imageSrc: database
+        },
+        {
+            title: t('fifthTitleProj'),
+            description: t('fifthDescProj'),
+            githubLink: 'https://github.com/dianaroseroba/SteelCalculator.git',
+            demoLink: 'https://tu-demo.com',
+            imageSrc: appmobile
         },
     ];
 
