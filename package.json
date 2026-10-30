@@ -1,0 +1,10 @@
+{
+  "name": "portafolio-diana-rosero",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Portafolio de Diana Rosero, Ingeniera de Datos (sitio estático)",
+  "scripts": {
+    "build": "node -e \"const fs=require('fs');fs.rmSync('dist',{recursive:true,force:true});fs.mkdirSync('dist');fs.cpSync('index.html','dist/index.html');fs.cpSync('assets','dist/assets',{recursive:true})\""
+  },
+  "engines": { "node": "22.x" }
+}
