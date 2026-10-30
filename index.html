@@ -143,6 +143,8 @@ section.sec{padding-block:88px 0}
 .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .prod{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;min-width:0}
 .prod .shot{aspect-ratio:16/10;max-width:100%;display:grid;place-items:center;position:relative;overflow:hidden}
+.prod .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0 0;display:block}
+.prod .shot.pic{border-bottom:1px solid var(--line)}
 .prod.q .shot{background:var(--slate)}
 .prod.s .shot{background:linear-gradient(160deg,var(--sage),var(--paper-2))}
 .prod .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -396,29 +398,31 @@ section.sec{padding-block:88px 0}
     <div class="sec-body"><div class="content">
       <div class="products">
         <article class="prod q">
-          <div class="shot"><span class="brand-w">Quinta Avenida</span>
-            <div class="ui" aria-hidden="true"><div class="uib"><i></i><i></i><i></i><span>almacén</span></div>
-              <div class="tags"><em>S</em><em>M</em><em>L</em><em>XL</em></div>
-              <div class="row"><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div></div>
-              <div class="ln a"></div><div class="ln b"></div><div class="ln c"></div></div>
-          </div>
+          <div class="shot pic"><img src="assets/quinta-avenida.webp" alt="Pantalla de inventario de Quinta Avenida con prendas, tallas y unidades disponibles" loading="lazy"></div>
           <div class="body">
             <h3>Quinta Avenida</h3>
-            <p lang="es">Sistema de control de almacén para la tienda de ropa Quinta Avenida: lleva el inventario de las prendas y lo que entra y sale de bodega.</p>
-            <p lang="en">Warehouse control system for the Quinta Avenida clothing store: tracks garment inventory and what goes in and out of stock.</p>
+            <p lang="es">Sistema de control de almacén y ventas para la tienda de ropa Quinta Avenida, en producción en Railway.</p>
+            <p lang="en">Warehouse and sales system for the Quinta Avenida clothing store, running in production on Railway.</p>
+            <ul lang="es">
+              <li>Inventario por referencia (SKU) con variantes de color y talla</li>
+              <li>Unidades disponibles por prenda y precios</li>
+              <li>Módulo de ventas, clientes y caja</li>
+              <li>Reportes del negocio</li>
+            </ul>
+            <ul lang="en">
+              <li>Inventory by SKU with color and size variants</li>
+              <li>Available units and prices per garment</li>
+              <li>Sales, customers and cash register modules</li>
+              <li>Business reports</li>
+            </ul>
           </div>
         </article>
         <article class="prod s">
-          <div class="shot"><span class="brand-w">Sbelta</span>
-            <div class="ui" aria-hidden="true"><div class="uib"><i></i><i></i><i></i><span>agenda</span></div>
-              <div class="row"><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div></div>
-              <div class="tags"><em>09:00</em><em>10:30</em><em>12:00</em></div>
-              <div class="ln a"></div><div class="ln c"></div><div class="ln b"></div></div>
-          </div>
+          <div class="shot pic"><img src="assets/sbelta.webp" alt="Pantalla de agenda de Sbelta con citas de la semana y pendientes" loading="lazy"></div>
           <div class="body">
             <h3>Sbelta</h3>
-            <p lang="es">Sistema completo de gestión para un spa, usado por la dueña y su equipo en el día a día.</p>
-            <p lang="en">A full management system for a spa, used daily by the owner and her team.</p>
+            <p lang="es">Sistema completo de gestión para un spa, en producción en Railway y usado por la dueña y su equipo en el día a día.</p>
+            <p lang="en">A full management system for a spa, running in production on Railway and used daily by the owner and her team.</p>
             <ul lang="es">
               <li>Agenda, fichas de clientas y planes por sesiones</li>
               <li>Caja diaria con cierres, gastos y saldos por medio de pago</li>
