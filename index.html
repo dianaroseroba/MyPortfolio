@@ -1,13 +1,514 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diana Rosero</title>
+<meta name="description" content="Diana Rosero · Ingeniera de Datos en Pasto, Colombia. SQL, Python, Teradata, ETL, GCP e IA aplicada.">
+<meta property="og:title" content="Diana Rosero · Ingeniera de Datos">
+<meta property="og:description" content="Portafolio: proyectos de ingeniería de datos, IA y aplicaciones para negocios.">
+<meta property="og:image" content="assets/diana-rosero.webp">
+<meta name="theme-color" content="#0F1F17">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark green "graph paper" page; hero = big name left, photo inside a sage-framed arch right; sections as a single 1120px column with a mono label rail. */
+/* Single dark "terminal-forest" look: palette #0F1F17 · #1E3A2E · #3E5A3F · #6B7F67 · #C7CBB8 · #3D4337, plus a lime glow accent. */
+:root{
+  --paper:#0F1F17; --paper-2:#1E3A2E; --surface:#142A20;
+  --olive:#C7CBB8; --olive-2:#8FA38A; --sage:#3E5A3F; --sage-soft:#1E3A2E;
+  --ink:#E4E7DA; --muted:#9CA796; --line:#28443A; --grid:rgba(199,203,184,.045);
+  --spark:#C8E66A; --glow:rgba(200,230,106,.10);
+  --on-olive:#0F1F17; --name:#6B7F67; --slate:#3D4337;
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Hanken Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--f-body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:48px 48px}
+main{background:radial-gradient(900px 520px at 78% 8%,var(--glow),transparent 70%) no-repeat}
+html[data-lang="en"] [lang="es"], html:not([data-lang="en"]) [lang="en"]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--spark);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);color:var(--olive);text-wrap:balance;margin:0;font-weight:800;letter-spacing:-.02em}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+.top-in{display:flex;align-items:center;gap:20px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:40px;height:40px;flex:none}
+.logo span{font-family:var(--f-display);font-weight:600;color:var(--olive);font-size:1.05rem;letter-spacing:-.01em}
+nav.links{display:flex;gap:22px;margin-left:auto}
+nav.links a{text-decoration:none;color:var(--muted);font-size:.93rem;font-weight:500}
+nav.links a:hover{color:var(--olive)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:none}
+.lang button{border:0;background:none;font:500 .75rem var(--f-mono);padding:6px 10px;color:var(--muted);cursor:pointer;letter-spacing:.06em}
+.lang button[aria-pressed="true"]{background:var(--olive);color:var(--on-olive)}
+@media (max-width:760px){nav.links{display:none}.lang{margin-left:auto}}
+
+/* Hero */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:40px;align-items:end;padding-block:56px 0}
+.hero-txt{padding-bottom:56px;min-width:0}
+.hero .kicker{color:var(--olive-2);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.hero .kicker i{width:8px;height:8px;border-radius:50%;background:var(--spark);display:inline-block}
+.hero h1{font-size:clamp(3rem,8.4vw,6.4rem);line-height:.9;font-variation-settings:"opsz" 96}
+.hero h1 em{font-style:normal;color:var(--name);-webkit-text-stroke:0}
+.hero .role{font-family:var(--f-display);font-weight:600;font-size:clamp(1.25rem,2.4vw,1.7rem);color:var(--ink);margin:22px 0 14px;letter-spacing:-.01em}
+.hero p.lead{max-width:52ch;color:var(--muted);font-size:1.08rem;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 .95rem var(--f-body);padding:12px 20px;border-radius:999px;border:1.5px solid var(--olive);color:var(--olive);background:none;cursor:pointer}
+.btn.solid{background:var(--olive);color:var(--on-olive)}
+.btn:hover{transform:translateY(-1px)}
+.btn{transition:transform .15s ease}
+.hero-pic{position:relative;align-self:end;min-width:0}
+.arch{position:relative;background:var(--sage);border-radius:240px 240px 18px 18px;aspect-ratio:600/860;max-width:100%;overflow:hidden;outline:8px solid var(--sage);outline-offset:-1px;box-shadow:0 0 80px var(--glow)}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.tag-float{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:500 .74rem/1.3 var(--f-mono);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.tag-float b{display:block;color:var(--olive);font-family:var(--f-display);font-size:1.05rem;font-weight:800;letter-spacing:-.01em}
+.tf1{left:-28px;top:22%}
+.tf2{right:-14px;bottom:16%}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}.hero-txt{padding-bottom:8px}.hero-pic{max-width:380px;margin-inline:auto;width:100%}.tf1{left:-6px}.tf2{right:-6px}}
+
+/* Sections */
+section.sec{padding-block:88px 0}
+.sec-h{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;margin-bottom:36px;align-items:baseline}
+.sec-h .mono{color:var(--olive-2);padding-top:8px;border-top:2px solid var(--olive)}
+.sec-h h2{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.05}
+.sec-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px}
+.sec-body>.content{grid-column:2;min-width:0}
+@media (max-width:760px){.sec-h,.sec-body{grid-template-columns:1fr;gap:12px}.sec-body>.content{grid-column:1}}
+
+/* About */
+.about p{font-size:1.12rem;max-width:62ch;margin:0 0 18px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:30px}
+.stat{background:var(--surface);padding:20px 22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stat b{font-family:var(--f-display);font-weight:800;font-size:2.1rem;color:var(--spark);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat b small{font-size:1rem;color:var(--muted);font-weight:600}
+.stat span{color:var(--muted);font-size:.9rem;line-height:1.4}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+
+/* Experience */
+.jobs{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;padding-block:24px;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job h3{font-size:1.4rem;font-weight:600;letter-spacing:-.01em}
+.job .when{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);white-space:nowrap;padding-top:6px}
+.job .org{grid-column:1/-1;color:var(--olive-2);font-weight:600;font-size:.95rem;margin-top:-2px}
+.job ul{grid-column:1/-1;margin:10px 0 0;padding-left:18px;color:var(--ink);max-width:70ch}
+.job li{margin-bottom:6px}
+.job li::marker{color:var(--sage)}
+.now{display:inline-block;font:500 .68rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:var(--sage-soft);color:var(--olive);border-radius:999px;padding:3px 9px;margin-left:8px;vertical-align:4px}
+@media (max-width:560px){.job{grid-template-columns:1fr}.job .when{padding-top:0}}
+
+/* Case studies */
+.cases{display:flex;flex-direction:column;gap:18px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
+.case h3{font-size:1.45rem;line-height:1.15;margin-bottom:14px;letter-spacing:-.015em}
+.case dl{margin:0;display:grid;gap:12px}
+.case dt{font:500 .7rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--olive-2)}
+.case dd{margin:2px 0 0;font-size:.98rem}
+.case .metric{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--f-display);font-weight:800;color:var(--olive);font-variant-numeric:tabular-nums}
+.flow .from{font-size:2rem;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--spark);text-decoration-thickness:2px}
+.flow .arrow{font-family:var(--f-mono);font-weight:400;color:var(--spark)}
+.flow .to{font-size:3rem;line-height:1}
+.metric .big{font-family:var(--f-display);font-weight:800;color:var(--olive);font-size:2.8rem;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.metric p{margin:0;color:var(--muted);font-size:.92rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 .72rem var(--f-mono);padding:4px 9px;border-radius:6px;background:var(--sage-soft);color:var(--olive);border:1px solid var(--line);white-space:nowrap}
+.bar{height:10px;border-radius:5px;background:var(--slate);overflow:hidden;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--sage);border-radius:5px}
+.bar i.after{background:var(--spark)}
+.barrow{display:grid;grid-template-columns:52px minmax(0,1fr) 54px;gap:10px;align-items:center;font:500 .75rem var(--f-mono);color:var(--muted)}
+.barrow b{color:var(--olive);text-align:right;font-variant-numeric:tabular-nums}
+.minis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mini h3{font-size:1.15rem;letter-spacing:-.01em}
+.mini p{margin:0;color:var(--muted);font-size:.95rem}
+.mini .big{font-family:var(--f-display);font-weight:800;color:var(--olive);font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.case{grid-template-columns:1fr;padding:22px}.case .metric{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}.minis{grid-template-columns:1fr}}
+
+/* Products */
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.prod{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;min-width:0}
+.prod .shot{aspect-ratio:16/10;max-width:100%;display:grid;place-items:center;position:relative;overflow:hidden}
+.prod.q .shot{background:var(--slate)}
+.prod.s .shot{background:linear-gradient(160deg,var(--sage),var(--paper-2))}
+.prod .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.prod h3{font-size:1.5rem;letter-spacing:-.015em}
+.prod p{margin:0;color:var(--muted)}
+.prod ul{margin:0;padding-left:18px;font-size:.94rem}
+.prod li{margin-bottom:4px}
+.prod li::marker{color:var(--sage)}
+.ui{width:78%;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.25);padding:12px;display:flex;flex-direction:column;gap:8px}
+.ui .uib{display:flex;gap:6px;align-items:center}
+.ui .uib i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.ui .uib span{margin-left:auto;font:500 .62rem var(--f-mono);color:var(--muted)}
+.ui .row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ui .k{background:var(--surface);border-radius:6px;padding:7px}
+.ui .k s{display:block;height:5px;width:60%;background:var(--line);border-radius:3px;text-decoration:none}
+.ui .k b{display:block;height:9px;width:80%;background:var(--olive);border-radius:3px;margin-top:6px;opacity:.85}
+.ui .ln{height:7px;border-radius:3px;background:var(--paper-2)}
+.ui .ln.a{width:90%}.ui .ln.b{width:72%}.ui .ln.c{width:84%}
+.ui .tags{display:flex;gap:5px}
+.ui .tags em{font-style:normal;font:500 .58rem var(--f-mono);padding:3px 6px;border-radius:4px;background:var(--sage-soft);color:var(--olive)}
+.prod .brand-w{position:absolute;left:16px;top:14px;font:500 .68rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--olive);opacity:.85}
+.prod.s .brand-w{color:var(--olive)}
+@media (max-width:760px){.products{grid-template-columns:1fr}}
+.others{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.other{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.other h4{margin:0;font-family:var(--f-display);font-weight:600;color:var(--olive);font-size:1.05rem}
+.other p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.45}
+@media (max-width:760px){.others{grid-template-columns:1fr}}
+
+/* Skills / education */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+.stack{display:flex;flex-direction:column}
+.stack-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid var(--line);align-items:baseline}
+.stack-row:last-child{border-bottom:1px solid var(--line)}
+.stack-row .mono{color:var(--olive-2);font-size:.72rem}
+.stack-row .chips{gap:6px}
+.cert{display:flex;gap:16px;align-items:center;background:var(--paper-2);color:var(--ink);border:1px solid var(--sage);border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.cert svg{width:52px;height:52px;flex:none}
+.cert b{font-family:var(--f-display);font-size:1.2rem;display:block;line-height:1.2}
+.cert span{font-size:.88rem;opacity:.85}
+.edu{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.edu li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;padding-block:14px;border-top:1px solid var(--line)}
+.edu li:last-child{border-bottom:1px solid var(--line)}
+.edu b{font-weight:600;color:var(--ink)}
+.edu small{grid-column:1;color:var(--muted);font-size:.88rem}
+.edu .when{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);grid-row:1/3;grid-column:2;align-self:center}
+.edu .when.go{color:var(--olive);background:var(--sage-soft);padding:3px 8px;border-radius:999px;align-self:center}
+.minor{margin-top:16px;color:var(--muted);font-size:.9rem}
+
+/* Contact */
+.contact{margin-top:96px;background:var(--paper-2);color:var(--ink);border-top:1px solid var(--sage);border-radius:28px 28px 0 0}
+.contact-in{padding-block:64px 40px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+.contact h2{color:var(--olive);font-size:clamp(2.2rem,5.4vw,4rem);line-height:.98}
+.contact h2 em{font-style:normal;color:var(--spark)}
+.contact p{opacity:.85;max-width:44ch;margin:16px 0 0}
+.clist{display:flex;flex-direction:column;gap:10px}
+.crow{display:flex;align-items:center;gap:12px;border:1px solid var(--sage);border-radius:12px;padding:12px 14px;min-width:0}
+.crow .mono{opacity:.7;font-size:.68rem;width:72px;flex:none}
+.crow a,.crow output{color:var(--ink);text-decoration:none;font-weight:500;overflow-wrap:anywhere;flex:1;min-width:0;user-select:all}
+.crow a:hover{text-decoration:underline}
+.copy{border:0;background:var(--spark);color:var(--on-olive);font:600 .75rem var(--f-body);padding:6px 10px;border-radius:999px;cursor:pointer;flex:none}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px 28px;border-top:1px solid var(--line);font:500 .72rem var(--f-mono);letter-spacing:.06em;opacity:.7}
+@media (max-width:760px){.contact-in{grid-template-columns:1fr}}
+
+/* load-in */
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+.hero-txt>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.hero-txt>*:nth-child(2){animation-delay:.06s}.hero-txt>*:nth-child(3){animation-delay:.12s}.hero-txt>*:nth-child(4){animation-delay:.18s}.hero-txt>*:nth-child(5){animation-delay:.24s}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#inicio" aria-label="Diana Rosero, inicio">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="18" fill="var(--olive)"/>
+        <text x="11" y="44" font-family="Bricolage Grotesque, Arial Narrow, sans-serif" font-weight="800" font-size="34" letter-spacing="-2" fill="var(--paper)">dr</text>
+        <circle cx="50" cy="40.5" r="4" fill="var(--sage)"/>
+        <path d="M14 52h22" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span>Diana Rosero</span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#sobre-mi"><span lang="es">Perfil</span><span lang="en">Profile</span></a>
+      <a href="#experiencia"><span lang="es">Experiencia</span><span lang="en">Experience</span></a>
+      <a href="#proyectos"><span lang="es">Proyectos</span><span lang="en">Projects</span></a>
+      <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" data-l="es" aria-pressed="true">ES</button>
+      <button type="button" id="btn-en" data-l="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="wrap hero">
+    <div class="hero-txt">
+      <div class="kicker mono"><i></i><span lang="es">Pasto, Colombia · disponible para proyectos part-time</span><span lang="en">Pasto, Colombia · open to part-time work</span></div>
+      <h1>Diana<br><em>Rosero</em></h1>
+      <p class="role"><span lang="es">Ingeniera de Datos</span><span lang="en">Data Engineer</span> · SQL, Python, Teradata, GCP</p>
+      <p class="lead">
+        <span lang="es">Convierto datos desordenados en información en la que el negocio puede confiar: modelos de datos, procesos ETL, auditoría de calidad y agentes de IA que acercan el SQL a quien no programa.</span>
+        <span lang="en">I turn messy data into information the business can trust: data models, ETL pipelines, data-quality audits and AI agents that bring SQL to people who don't code.</span>
+      </p>
+      <div class="cta">
+        <a class="btn solid" href="#proyectos"><span lang="es">Ver proyectos</span><span lang="en">See projects</span> →</a>
+        <a class="btn" href="#contacto"><span lang="es">Contactarme</span><span lang="en">Get in touch</span></a>
+      </div>
+    </div>
+    <div class="hero-pic">
+      <div class="arch"><img src="assets/diana-rosero.webp" alt="Diana Rosero sonriendo, con chaqueta de cuero negra" width="600" height="899"></div>
+      <div class="tag-float tf1"><b>99,5%</b><span lang="es">cobertura de datos</span><span lang="en">data coverage</span></div>
+      <div class="tag-float tf2"><b>GCP</b>Professional<br>Data Engineer</div>
+    </div>
+  </div>
+
+  <!-- Perfil -->
+  <section class="sec wrap" id="sobre-mi">
+    <div class="sec-h"><span class="mono"><span lang="es">Perfil</span><span lang="en">Profile</span></span>
+      <h2><span lang="es">De la planta de producción al data warehouse.</span><span lang="en">From the shop floor to the data warehouse.</span></h2></div>
+    <div class="sec-body"><div class="content about">
+      <p lang="es">Soy ingeniera industrial e ingeniera de software, y estoy terminando una maestría en Ciencia de Datos para Negocios. Empecé automatizando inventarios y finanzas con Excel y VBA en una empresa de aceros; hoy diseño modelos de datos y procesos ETL en Teradata para clientes del sector salud.</p>
+      <p lang="en">I'm an industrial engineer and software engineer, finishing a master's in Data Science for Business. I started by automating inventory and finance with Excel and VBA at a steel company; today I design data models and ETL processes in Teradata for healthcare clients.</p>
+      <p lang="es">Lo que más disfruto es traducir una pregunta del negocio a una pregunta de datos, encontrar dónde se rompe la lógica y dejar la información lista para decidir.</p>
+      <p lang="en">What I enjoy most is translating a business question into a data question, finding where the logic breaks, and leaving the information ready for decisions.</p>
+      <div class="stats">
+        <div class="stat"><b>~2,5 M</b><span lang="es">registros auditados y reclasificados en Teradata</span><span lang="en">records audited and reclassified in Teradata</span></div>
+        <div class="stat"><b>+30.000</b><span lang="es">casos adicionales correctamente clasificados</span><span lang="en">additional cases correctly classified</span></div>
+        <div class="stat"><b>700 k</b><span lang="es">registros de correo procesados con Python para un dashboard</span><span lang="en">email records processed in Python for a dashboard</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Experiencia -->
+  <section class="sec wrap" id="experiencia">
+    <div class="sec-h"><span class="mono"><span lang="es">Experiencia</span><span lang="en">Experience</span></span>
+      <h2><span lang="es">Dónde he trabajado</span><span lang="en">Where I've worked</span></h2></div>
+    <div class="sec-body"><div class="content jobs">
+      <article class="job">
+        <h3><span lang="es">Ingeniera de Datos</span><span lang="en">Data Engineer</span><span class="now"><span lang="es">Actual</span><span lang="en">Current</span></span></h3>
+        <span class="when"><span lang="es">dic 2025 – hoy</span><span lang="en">Dec 2025 – now</span></span>
+        <span class="org">Lovelytics LATAM</span>
+        <ul lang="es">
+          <li>Diseño modelos de datos y procesos automáticos de recolección con buena calidad de datos para los usuarios de negocio.</li>
+          <li>Integración en Data Warehouse y Data Lake con herramientas on-premise y cloud.</li>
+          <li>Traduzco problemas de negocio a problemas de datos y capacito a usuarios finales en el uso de la información.</li>
+        </ul>
+        <ul lang="en">
+          <li>Design data models and automated collection processes with strong data quality for business users.</li>
+          <li>Data Warehouse and Data Lake integration with on-premise and cloud tools.</li>
+          <li>Translate business problems into data problems and train end users to use information as an asset.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <h3><span lang="es">Practicante de Analítica de Datos</span><span lang="en">Data Analytics Intern</span></h3>
+        <span class="when"><span lang="es">dic 2024 – dic 2025</span><span lang="en">Dec 2024 – Dec 2025</span></span>
+        <span class="org">SURA · TID</span>
+        <ul lang="es">
+          <li>Scripts en Python para procesar y analizar más de 700.000 registros de correo corporativo.</li>
+          <li>Automatización de procesos ETL y consultas SQL complejas.</li>
+          <li>Dashboards en Power BI para decisiones de arquitectura digital y un micrositio interno para la Coordinación Estratégica de Datos.</li>
+        </ul>
+        <ul lang="en">
+          <li>Python scripts to process and analyze 700,000+ corporate email records.</li>
+          <li>ETL automation and complex SQL queries.</li>
+          <li>Power BI dashboards for digital-architecture decisions and an internal microsite for the Data Strategy team.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <h3><span lang="es">Ingeniera Industrial</span><span lang="en">Industrial Engineer</span></h3>
+        <span class="when"><span lang="es">jul 2021 – jun 2025</span><span lang="en">Jul 2021 – Jun 2025</span></span>
+        <span class="org">Maquicarmo y BM Aceros</span>
+        <ul lang="es">
+          <li>Automatización de procesos financieros y de inventario con Excel y VBA.</li>
+          <li>Programación de máquinas CNC (plasma y oxicorte) y control de producción.</li>
+          <li>Desarrollo del aplicativo web institucional con React y Tailwind CSS.</li>
+        </ul>
+        <ul lang="en">
+          <li>Automated finance and inventory processes with Excel and VBA.</li>
+          <li>Programmed CNC machines (plasma and oxy-fuel cutting) and managed production control.</li>
+          <li>Built the company's web app with React and Tailwind CSS.</li>
+        </ul>
+      </article>
+    </div></div>
+  </section>
+
+  <!-- Proyectos de datos -->
+  <section class="sec wrap" id="proyectos">
+    <div class="sec-h"><span class="mono"><span lang="es">Datos e IA</span><span lang="en">Data &amp; AI</span></span>
+      <h2><span lang="es">Proyectos de ingeniería de datos</span><span lang="en">Data engineering work</span></h2></div>
+    <div class="sec-body"><div class="content cases">
+      <article class="case">
+        <div>
+          <h3><span lang="es">Auditoría y corrección de un algoritmo de clasificación en SQL</span><span lang="en">Auditing and fixing a SQL classification algorithm</span></h3>
+          <dl>
+            <div><dt><span lang="es">Problema</span><span lang="en">Problem</span></dt><dd lang="es">La lógica de cruce entre fuentes descartaba cerca de la mitad de los registros válidos y dejaba casos sin clasificar.</dd><dd lang="en">The cross-source join logic dropped about half of the valid records, leaving cases unclassified.</dd></div>
+            <div><dt><span lang="es">Solución</span><span lang="en">Solution</span></dt><dd lang="es">Revisión del código en Teradata, corrección de 4 errores de lógica, validación contra las tablas fuente y réplica en 11 cortes mensuales.</dd><dd lang="en">Reviewed the Teradata code, fixed 4 logic errors, validated against source tables and replicated across 11 monthly cuts.</dd></div>
+          </dl>
+          <div class="chips" style="margin-top:16px"><span class="chip">Teradata SQL</span><span class="chip">Data quality</span><span class="chip">Salud · Health</span></div>
+        </div>
+        <div class="metric">
+          <span class="mono" style="color:var(--olive-2)"><span lang="es">Cobertura de datos</span><span lang="en">Data coverage</span></span>
+          <div class="barrow"><span lang="es">Antes</span><span lang="en">Before</span><div class="bar"><i style="width:49.6%"></i></div><b>49,6%</b></div>
+          <div class="barrow"><span lang="es">Después</span><span lang="en">After</span><div class="bar"><i class="after" style="width:99.5%"></i></div><b>99,5%</b></div>
+          <p lang="es">~2,5 M registros y más de 30.000 casos adicionales correctamente clasificados.</p>
+          <p lang="en">~2.5 M records and 30,000+ additional cases correctly classified.</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3><span lang="es">Agente de IA para consultas de datos en Microsoft Teams</span><span lang="en">AI agent for data queries in Microsoft Teams</span></h3>
+          <dl>
+            <div><dt><span lang="es">Problema</span><span lang="en">Problem</span></dt><dd lang="es">Los usuarios de negocio dependían del equipo técnico para ejecutar y adaptar un proceso de 13 consultas SQL.</dd><dd lang="en">Business users depended on the tech team to run and adapt a 13-query SQL process.</dd></div>
+            <div><dt><span lang="es">Solución</span><span lang="en">Solution</span></dt><dd lang="es">Motor de plantillas SQL parametrizado y un agente conversacional que entiende la solicitud en lenguaje natural, pide los datos faltantes, valida y genera el SQL. Es también la base de mi tesis de maestría (Text-to-SQL).</dd><dd lang="en">A parameterized SQL template engine plus a conversational agent that understands natural-language requests, asks for missing inputs, validates and generates the SQL. It's also the basis of my master's thesis (Text-to-SQL).</dd></div>
+          </dl>
+          <div class="chips" style="margin-top:16px"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">FastAPI</span><span class="chip">Azure Bot</span><span class="chip">LLMs</span></div>
+        </div>
+        <div class="metric">
+          <span class="mono" style="color:var(--olive-2)"><span lang="es">Piloto</span><span lang="en">Pilot</span></span>
+          <div class="flow"><span class="from">13 SQL</span><span class="arrow">→</span><span class="to">1 chat</span></div>
+          <p lang="es">El usuario pide el dato en sus palabras; el agente arma y valida la consulta.</p>
+          <p lang="en">Users ask in their own words; the agent builds and validates the query.</p>
+        </div>
+      </article>
+
+      <div class="minis">
+        <article class="mini">
+          <span class="big">1,18 M</span>
+          <h3><span lang="es">Dataset para modelo predictivo</span><span lang="en">Training set for a predictive model</span></h3>
+          <p lang="es">Conjunto de entrenamiento con diseño de casos y controles, y corrección del código heredado que dejaba vacía la variable objetivo.</p>
+          <p lang="en">Case-control training set, plus fixes to legacy code that left the target variable empty.</p>
+        </article>
+        <article class="mini">
+          <span class="big">70+ · 968 k</span>
+          <h3><span lang="es">ETL de integración con sistema externo</span><span lang="en">ETL integration with an external system</span></h3>
+          <p lang="es">Extracción, transformación y carga de más de 70 variables desde varias fuentes para ~968 mil registros, listo para envío automático.</p>
+          <p lang="en">Extract, transform and load of 70+ variables from several sources for ~968k records, ready for automated delivery.</p>
+        </article>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Productos -->
+  <section class="sec wrap" id="apps">
+    <div class="sec-h"><span class="mono"><span lang="es">Desarrollo</span><span lang="en">Builds</span></span>
+      <h2><span lang="es">Aplicaciones para negocios reales</span><span lang="en">Apps for real businesses</span></h2></div>
+    <div class="sec-body"><div class="content">
+      <div class="products">
+        <article class="prod q">
+          <div class="shot"><span class="brand-w">Quinta Avenida</span>
+            <div class="ui" aria-hidden="true"><div class="uib"><i></i><i></i><i></i><span>inventario</span></div>
+              <div class="tags"><em>S</em><em>M</em><em>L</em><em>XL</em></div>
+              <div class="row"><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div></div>
+              <div class="ln a"></div><div class="ln b"></div><div class="ln c"></div></div>
+          </div>
+          <div class="body">
+            <h3>Quinta Avenida</h3>
+            <p lang="es">Sistema de gestión para una tienda de ropa.</p>
+            <p lang="en">Management system for a clothing store.</p>
+            <!-- TODO: funciones y tecnologías por confirmar con Diana -->
+          </div>
+        </article>
+        <article class="prod s">
+          <div class="shot"><span class="brand-w">Sbelta</span>
+            <div class="ui" aria-hidden="true"><div class="uib"><i></i><i></i><i></i><span>agenda</span></div>
+              <div class="row"><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div><div class="k"><s></s><b></b></div></div>
+              <div class="tags"><em>09:00</em><em>10:30</em><em>12:00</em></div>
+              <div class="ln a"></div><div class="ln c"></div><div class="ln b"></div></div>
+          </div>
+          <div class="body">
+            <h3>Sbelta</h3>
+            <p lang="es">Sistema completo de gestión para un spa, usado por la dueña y su equipo en el día a día.</p>
+            <p lang="en">A full management system for a spa, used daily by the owner and her team.</p>
+            <ul lang="es">
+              <li>Agenda, fichas de clientas y planes por sesiones</li>
+              <li>Caja diaria con cierres, gastos y saldos por medio de pago</li>
+              <li>Inventario con alertas de stock y vencimiento</li>
+              <li>Recordatorios por WhatsApp y correo, roles y reportes</li>
+            </ul>
+            <ul lang="en">
+              <li>Scheduling, client records and session packages</li>
+              <li>Daily cash register with closings, expenses and balances by payment method</li>
+              <li>Inventory with low-stock and expiry alerts</li>
+              <li>WhatsApp and email reminders, roles and reports</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="others">
+        <div class="other"><h4>CoachFit</h4><p lang="es">App móvil para registrar entrenamientos de natación, con gráficas de progreso y mensajes motivacionales generados por IA.</p><p lang="en">Mobile app to log swim workouts, with progress charts and AI-generated motivational messages.</p></div>
+        <div class="other"><h4><span lang="es">Asistente IA para fracturas</span><span lang="en">AI fracture assistant</span></h4><p lang="es">Carga de radiografías y un agente de IA que da recomendaciones preventivas antes de la consulta médica.</p><p lang="en">X-ray upload and an AI agent that gives preventive guidance before a doctor's visit.</p></div>
+        <div class="other"><h4>Keysafe</h4><p lang="es">Aplicativo web para guardar contraseñas de forma segura.</p><p lang="en">Web app for storing passwords securely.</p></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Habilidades y formación -->
+  <section class="sec wrap" id="formacion">
+    <div class="sec-h"><span class="mono"><span lang="es">Stack y formación</span><span lang="en">Stack &amp; education</span></span>
+      <h2><span lang="es">Herramientas y estudios</span><span lang="en">Tools and education</span></h2></div>
+    <div class="sec-body"><div class="content two">
+      <div class="stack">
+        <div class="stack-row"><span class="mono"><span lang="es">Datos</span><span lang="en">Data</span></span><div class="chips"><span class="chip">SQL · Teradata</span><span class="chip">ETL / ELT</span><span class="chip">Data quality</span><span class="chip">Databricks SQL</span></div></div>
+        <div class="stack-row"><span class="mono">Cloud</span><div class="chips"><span class="chip">Google Cloud</span><span class="chip">Azure Bot</span><span class="chip">FastAPI</span></div></div>
+        <div class="stack-row"><span class="mono"><span lang="es">IA</span><span lang="en">AI</span></span><div class="chips"><span class="chip">LLMs</span><span class="chip">LangGraph</span><span class="chip">Text-to-SQL</span></div></div>
+        <div class="stack-row"><span class="mono"><span lang="es">Código</span><span lang="en">Code</span></span><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">React</span></div></div>
+        <div class="stack-row"><span class="mono">BI</span><div class="chips"><span class="chip">Power BI</span><span class="chip">Excel / VBA</span></div></div>
+        <div class="stack-row"><span class="mono"><span lang="es">Idiomas</span><span lang="en">Languages</span></span><div class="chips"><span class="chip"><span lang="es">Español nativo</span><span lang="en">Spanish, native</span></span><span class="chip"><span lang="es">Inglés B1</span><span lang="en">English B1</span></span></div></div>
+      </div>
+      <div>
+        <div class="cert">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none" stroke="var(--sage)" stroke-width="2"/><path d="M16 27l7 7 14-15" fill="none" stroke="var(--spark)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b>Google Cloud Professional Data Engineer</b><span lang="es">Certificación profesional</span><span lang="en">Professional certification</span></div>
+        </div>
+        <ul class="edu">
+          <li><b><span lang="es">Maestría en Ciencia de Datos para Negocios</span><span lang="en">MSc in Data Science for Business</span></b><small>Centro Europeo de Posgrados · Big Data &amp; Business Analytics</small><span class="when go"><span lang="es">En curso</span><span lang="en">In progress</span></span></li>
+          <li><b><span lang="es">Ingeniería de Software</span><span lang="en">Software Engineering</span></b><small>Universidad Cooperativa de Colombia</small><span class="when">2025</span></li>
+          <li><b><span lang="es">Ingeniería Industrial</span><span lang="en">Industrial Engineering</span></b><small>Universidad Cooperativa de Colombia</small><span class="when">2020</span></li>
+        </ul>
+        <p class="minor" lang="es">También: Mejores prácticas de SQL en Databricks, Teradata Advanced SQL Engine 17.10, Introduction to the Teradata Database, bootcamp en inteligencia artificial y Programación con JavaScript.</p>
+        <p class="minor" lang="en">Also: SQL Best Practices on Databricks, Teradata Advanced SQL Engine 17.10, Introduction to the Teradata Database, an AI bootcamp and JavaScript Programming.</p>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer class="contact" id="contacto">
+  <div class="wrap contact-in">
+    <div>
+      <h2><span lang="es">¿Tienes datos<br>que <em>ordenar</em>?</span><span lang="en">Got data<br>that needs <em>order</em>?</span></h2>
+      <p lang="es">Busco proyectos de ingeniería de datos part-time o remotos. Escríbeme y conversamos.</p>
+      <p lang="en">I'm looking for part-time or remote data engineering work. Write to me and let's talk.</p>
+    </div>
+    <div class="clist">
+      <div class="crow"><span class="mono">Email</span><output id="mail">diana.caro11@hotmail.com</output><button class="copy" type="button" id="copy-mail"><span lang="es">Copiar</span><span lang="en">Copy</span></button></div>
+      <div class="crow"><span class="mono">LinkedIn</span><a href="https://www.linkedin.com/in/diana-carolina-rosero-bastidas-433060105" target="_blank" rel="noopener">diana-carolina-rosero-bastidas</a></div>
+      <div class="crow"><span class="mono">GitHub</span><a href="https://github.com/dianaroseroba" target="_blank" rel="noopener">github.com/dianaroseroba</a></div>
+    </div>
+  </div>
+  <div class="wrap foot"><span>© 2026 Diana Carolina Rosero Bastidas</span><span>Pasto · Nariño · Colombia</span></div>
+</footer>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  function setLang(l){
+    root.setAttribute("data-lang",l); root.lang=l;
+    document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.l===l)));
+    try{localStorage.setItem("dr-lang",l)}catch(e){}
+  }
+  let saved=null; try{saved=localStorage.getItem("dr-lang")}catch(e){}
+  setLang(saved==="en"?"en":"es");
+  document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.l)));
+  const btn=document.getElementById("copy-mail");
+  btn.addEventListener("click",()=>{
+    const t=document.getElementById("mail").textContent;
+    const done=()=>{btn.innerHTML=root.lang==="en"?"Copied":"Copiado";setTimeout(()=>{btn.innerHTML='<span lang="es">Copiar</span><span lang="en">Copy</span>'},1600)};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+
+</body>
 </html>

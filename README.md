@@ -1,8 +1,20 @@
-# React + Vite
+# Diana Rosero · Ingeniera de Datos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio personal. Ingeniera de datos en Pasto, Colombia: SQL (Teradata), Python, ETL, Google Cloud e IA aplicada.
 
-Currently, two official plugins are available:
+**Sitio:** https://dianaroseroba.github.io/MyPortfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Qué hay en el portafolio
+
+- **Ingeniería de datos:** auditoría de un algoritmo de clasificación en SQL (cobertura de 49,6% a 99,5% en ~2,5 M de registros), agente de IA Text-to-SQL para Microsoft Teams, dataset para modelo predictivo (~1,18 M registros) y ETL de integración (70+ variables, ~968 mil registros).
+- **Aplicaciones:** Quinta Avenida (gestión para tienda de ropa) y Sbelta (gestión integral para un spa).
+- **Certificación:** Google Cloud Professional Data Engineer.
+
+## Tecnología
+
+Sitio estático en un solo `index.html` (HTML + CSS + JS, sin dependencias), bilingüe español / inglés. Se publica con GitHub Pages desde la rama `main`.
+
+## Contacto
+
+- LinkedIn: [diana-carolina-rosero-bastidas](https://www.linkedin.com/in/diana-carolina-rosero-bastidas-433060105)
+- Correo: diana.caro11@hotmail.com
